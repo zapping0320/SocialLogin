@@ -33,14 +33,14 @@ class LoginViewController: UIViewController {
                     _ = oauthToken
                     // 어세스토큰
                     let accessToken = oauthToken?.accessToken
-                    self.goMainVC("kakao")
+                    self.goMainVC(.KaKao)
                 }
             }
         }
         
     }
     
-    func goMainVC(_ loginType:String) {
+    func goMainVC(_ loginType:LogInType) {
         let mainVC = self.storyboard?.instantiateViewController(identifier: "mainVC") as! MainViewController
         mainVC.modalPresentationStyle = .fullScreen
         mainVC.loginType = loginType

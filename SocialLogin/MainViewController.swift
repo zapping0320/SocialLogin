@@ -11,7 +11,7 @@ import KakaoSDKUser
 
 class MainViewController: UIViewController {
     
-    public var loginType:String = ""
+    public var loginType:LogInType = .KaKao
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +22,7 @@ class MainViewController: UIViewController {
     @IBAction func signOut(_ sender: Any) {
         
         
-        if loginType == "kakao" {
+        if loginType == .KaKao {
         
         UserApi.shared.logout {(error) in
             if let error = error {
