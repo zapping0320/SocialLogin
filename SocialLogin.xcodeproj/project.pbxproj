@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		63339BAC25762135003214F4 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63339BAB25762135003214F4 /* MainViewController.swift */; };
 		63B449E9257610C00038E1A4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B449E8257610C00038E1A4 /* AppDelegate.swift */; };
 		63B449EB257610C00038E1A4 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B449EA257610C00038E1A4 /* SceneDelegate.swift */; };
-		63B449ED257610C00038E1A4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B449EC257610C00038E1A4 /* ViewController.swift */; };
+		63B449ED257610C00038E1A4 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63B449EC257610C00038E1A4 /* LoginViewController.swift */; };
 		63B449F0257610C00038E1A4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B449EE257610C00038E1A4 /* Main.storyboard */; };
 		63B449F2257610C20038E1A4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63B449F1257610C20038E1A4 /* Assets.xcassets */; };
 		63B449F5257610C20038E1A4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63B449F3257610C20038E1A4 /* LaunchScreen.storyboard */; };
@@ -19,10 +20,11 @@
 /* Begin PBXFileReference section */
 		42CE94B91BE6BA19B70658CD /* Pods_SocialLogin.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SocialLogin.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4967AC34D925FCD689E8CEF5 /* Pods-SocialLogin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SocialLogin.debug.xcconfig"; path = "Target Support Files/Pods-SocialLogin/Pods-SocialLogin.debug.xcconfig"; sourceTree = "<group>"; };
+		63339BAB25762135003214F4 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		63B449E5257610C00038E1A4 /* SocialLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SocialLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63B449E8257610C00038E1A4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63B449EA257610C00038E1A4 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		63B449EC257610C00038E1A4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		63B449EC257610C00038E1A4 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		63B449EF257610C00038E1A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		63B449F1257610C20038E1A4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63B449F4257610C20038E1A4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -65,11 +67,12 @@
 			children = (
 				63B449E8257610C00038E1A4 /* AppDelegate.swift */,
 				63B449EA257610C00038E1A4 /* SceneDelegate.swift */,
-				63B449EC257610C00038E1A4 /* ViewController.swift */,
+				63B449EC257610C00038E1A4 /* LoginViewController.swift */,
 				63B449EE257610C00038E1A4 /* Main.storyboard */,
 				63B449F1257610C20038E1A4 /* Assets.xcassets */,
 				63B449F3257610C20038E1A4 /* LaunchScreen.storyboard */,
 				63B449F6257610C20038E1A4 /* Info.plist */,
+				63339BAB25762135003214F4 /* MainViewController.swift */,
 			);
 			path = SocialLogin;
 			sourceTree = "<group>";
@@ -88,7 +91,6 @@
 				4967AC34D925FCD689E8CEF5 /* Pods-SocialLogin.debug.xcconfig */,
 				B344A05F6EA4BE52A0185136 /* Pods-SocialLogin.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -207,9 +209,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				63B449ED257610C00038E1A4 /* ViewController.swift in Sources */,
+				63B449ED257610C00038E1A4 /* LoginViewController.swift in Sources */,
 				63B449E9257610C00038E1A4 /* AppDelegate.swift in Sources */,
 				63B449EB257610C00038E1A4 /* SceneDelegate.swift in Sources */,
+				63339BAC25762135003214F4 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
