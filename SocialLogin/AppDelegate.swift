@@ -3,11 +3,12 @@
 //  SocialLogin
 //
 //  Created by DD Dev on 2020/12/01.
+//  Copyright © 2020 zenoTeam. All rights reserved.
 //
 
 import UIKit
 
-@main
+@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
