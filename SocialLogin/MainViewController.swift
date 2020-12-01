@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import KakaoSDKUser
 
 class MainViewController: UIViewController {
     
@@ -21,6 +22,24 @@ class MainViewController: UIViewController {
     @IBAction func signOut(_ sender: Any) {
         
         
+        if loginType == "kakao" {
+        
+        UserApi.shared.logout {(error) in
+            if let error = error {
+                print(error)
+            }
+            else {
+                print("logout() success.")
+                self.dismissVC()
+            }
+        }
+            
+        }
+        
+    }
+    
+    func dismissVC() {
+        self.dismiss(animated: true, completion: nil)
     }
    
 

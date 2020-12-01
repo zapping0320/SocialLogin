@@ -2,3 +2,4 @@ ${PODS_ROOT}/Target Support Files/Pods-SocialLogin/Pods-SocialLogin-frameworks.s
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
 ${BUILT_PRODUCTS_DIR}/KakaoSDKAuth/KakaoSDKAuth.framework
 ${BUILT_PRODUCTS_DIR}/KakaoSDKCommon/KakaoSDKCommon.framework
+${BUILT_PRODUCTS_DIR}/KakaoSDKUser/KakaoSDKUser.framework
