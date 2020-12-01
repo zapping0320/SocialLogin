@@ -58,12 +58,21 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="J2V-dy-ukL">
+                                <rect key="frame" x="20" y="486" width="374" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="WWV-Hz-cPG"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                         <constraints>
+                            <constraint firstItem="J2V-dy-ukL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="3gm-qK-wSZ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="54W-wa-F2i" secondAttribute="trailing" constant="20" id="BwU-L7-caw"/>
                             <constraint firstItem="MkX-Qw-jsz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HIo-ia-J80"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="J2V-dy-ukL" secondAttribute="trailing" constant="20" id="Hy6-q8-Meq"/>
+                            <constraint firstItem="J2V-dy-ukL" firstAttribute="top" secondItem="7CB-h2-eTk" secondAttribute="bottom" constant="20" id="P6Z-pk-emj"/>
                             <constraint firstItem="7CB-h2-eTk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SND-NP-RZo"/>
                             <constraint firstItem="j4H-0c-qql" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="VKM-lW-a2r"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xhq-hp-nvc" secondAttribute="trailing" constant="20" id="VT7-Rf-aOU"/>
@@ -83,6 +92,7 @@
                     <navigationItem key="navigationItem" id="4A0-9B-zEF"/>
                     <connections>
                         <outlet property="emailTextField" destination="Cai-Ne-vHj" id="Hcv-i8-yCA"/>
+                        <outlet property="loginProviderStackView" destination="J2V-dy-ukL" id="bGb-oa-bQr"/>
                         <outlet property="passwordTextField" destination="54W-wa-F2i" id="yni-Li-yin"/>
                     </connections>
                 </viewController>
