@@ -49,7 +49,8 @@ class LoginViewController: UIViewController {
         if UserInfoHelper.isLogIn() {
             let loginType = UserInfoHelper.getLogInType()
             if loginType == .Google {
-                GIDSignIn.sharedInstance()?.signIn()
+                //GIDSignIn.sharedInstance()?.signIn() - request login
+                GIDSignIn.sharedInstance()?.restorePreviousSignIn() //auto login
             }
             self.goMainVC(loginType)
         }

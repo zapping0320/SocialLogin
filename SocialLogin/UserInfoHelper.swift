@@ -63,6 +63,9 @@ class UserInfoHelper {
         else if loginType == .Apple {
             loginString = "apple"
         }
+        else if loginType == .Google {
+            loginString = "google"
+        }
         
         let defaults = UserDefaults.standard
         defaults.set(loginString, forKey: "logInType")
@@ -80,6 +83,9 @@ class UserInfoHelper {
         }
         else if logInType == "apple" {
             return .Apple
+        }
+        else if logInType == "google" {
+            return .Google
         }
         else {
             return .None
