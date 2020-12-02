@@ -9,6 +9,7 @@
 import UIKit
 import KakaoSDKUser
 import GoogleSignIn
+import FBSDKLoginKit
 
 class MainViewController: UIViewController {
     
@@ -42,6 +43,9 @@ class MainViewController: UIViewController {
         }
         else if loginType == .Google {
             GIDSignIn.sharedInstance()?.signOut()
+        }
+        else if loginType == .Facebook {
+            LoginManager.init().logOut()
         }
         
         UserInfoHelper.resetLogin()

@@ -13,7 +13,7 @@ import GoogleSignIn
 import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
-
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
@@ -21,8 +21,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginProviderStackView: UIStackView!
     
     @IBOutlet weak var signInButton: GIDSignInButton!
-
-    @IBOutlet weak var fbLoginView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,7 +29,7 @@ class LoginViewController: UIViewController {
         
         setGoogleSignInButton()
 
-        setFacebookLoginButton()
+        //setFacebookLoginButton()
     }
     
     func setupProviderLoginView() {
@@ -47,26 +45,37 @@ class LoginViewController: UIViewController {
         signInButton.style = .wide // .wide .iconOnly .standard
     }
     
-    func setFacebookLoginButton() {
-        let loginButton = FBLoginButton()
-        //"로고 continue with FaceBook"
-        loginButton.frame = CGRect(x: 0, y: 0, width: 250, height: 50)
-        //width 207-209는 내용이 바뀌면서 글자가 잘리는 수준
-        //"로고 login"
-        //loginButton.frame = CGRect(x: 0, y: 0, width: 206, height: 50)
-        self.fbLoginView.addSubview(loginButton)
-    }
+//    func setFacebookLoginButton() {
+//        let loginButton = FBLoginButton()
+//        //"로고 continue with FaceBook"
+//        loginButton.frame = CGRect(x: 0, y: 0, width: 250, height: 50)
+//        //width 207-209는 내용이 바뀌면서 글자가 잘리는 수준
+//        //"로고 login"
+//        //loginButton.frame = CGRect(x: 0, y: 0, width: 206, height: 50)
+//        loginButton.permissions = ["public_profile", "email"]
+//        self.fbLoginView.addSubview(loginButton)
+//    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-            
+        
         if UserInfoHelper.isLogIn() {
             let loginType = UserInfoHelper.getLogInType()
             if loginType == .Google {
                 //GIDSignIn.sharedInstance()?.signIn() - request login
                 GIDSignIn.sharedInstance()?.restorePreviousSignIn() //auto login
             }
-            self.goMainVC(loginType)
+            else if loginType == .Facebook {
+                if let token = AccessToken.current, !token.isExpired {
+                    self.goMainVC(loginType)
+                }
+                else {
+                    UserInfoHelper.resetLogin()
+                }
+            }
+            else {
+                self.goMainVC(loginType)
+            }
         }
     }
     
@@ -102,6 +111,38 @@ class LoginViewController: UIViewController {
             }
         }
         
+    }
+    
+    
+    @IBAction func loginFacebook(_ sender: Any) {
+        LoginManager.init().logIn(permissions: [.publicProfile, .email], viewController: self) { (loginResult) in
+
+            switch loginResult {
+
+            case .failed(let error):
+
+                print(error)
+
+            case .cancelled:
+
+                print("유저 캔슬")
+
+            case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+
+                print("로그인 성공")
+
+                print(grantedPermissions)
+
+                print(declinedPermissions)
+
+                print(accessToken)
+                
+                print("facebook appID = " + accessToken.appID)
+                
+                self.goMainVC(.Facebook)
+            }
+
+        }
     }
     
     func goMainVC(_ loginType:LogInType) {

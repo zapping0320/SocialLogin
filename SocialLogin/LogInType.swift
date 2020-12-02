@@ -13,4 +13,5 @@ enum LogInType:String {
     case KaKao  = "kakao"
     case Apple  = "apple"
     case Google = "google"
+    case Facebook = "facebook"
 }

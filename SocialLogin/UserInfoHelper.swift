@@ -56,17 +56,6 @@ class UserInfoHelper {
     }
     
     static func setLogInType(_ loginType: LogInType) {
-//        var loginString = ""
-//        if loginType == .KaKao {
-//            loginString = "kakao"
-//        }
-//        else if loginType == .Apple {
-//            loginString = "apple"
-//        }
-//        else if loginType == .Google {
-//            loginString = "google"
-//        }
-        
         let defaults = UserDefaults.standard
         defaults.set(loginType.rawValue, forKey: "logInType")
         
@@ -86,6 +75,9 @@ class UserInfoHelper {
         }
         else if logInType == LogInType.Google.rawValue {
             return .Google
+        }
+        else if logInType == LogInType.Facebook.rawValue {
+            return .Facebook
         }
         else {
             return .None
