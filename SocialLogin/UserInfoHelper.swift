@@ -16,7 +16,7 @@ class UserInfoHelper {
             return ""
         }
         
-        if logInType == "apple" {
+        if logInType == LogInType.Apple.rawValue {
             guard let appleID = defaults.string(forKey: "appleID") else {
                 return ""
             }
@@ -31,18 +31,18 @@ class UserInfoHelper {
     
     static func setAppleLoginID(_ appleID:String) {
         let defaults = UserDefaults.standard
-        defaults.set("apple", forKey: "logInType")
+        defaults.set(LogInType.Apple.rawValue, forKey: "logInType")
         defaults.set(appleID, forKey: "appleID")
     }
     
     static func setKakaoLogin() {
         let defaults = UserDefaults.standard
-        defaults.set("kakao", forKey: "logInType")
+        defaults.set(LogInType.KaKao.rawValue, forKey: "logInType")
     }
     
     static func resetLogin() {
         let defaults = UserDefaults.standard
-        defaults.set("", forKey: "logInType")
+        defaults.set(LogInType.None.rawValue, forKey: "logInType")
         defaults.set("", forKey: "appleID")
     }
     
@@ -56,19 +56,19 @@ class UserInfoHelper {
     }
     
     static func setLogInType(_ loginType: LogInType) {
-        var loginString = ""
-        if loginType == .KaKao {
-            loginString = "kakao"
-        }
-        else if loginType == .Apple {
-            loginString = "apple"
-        }
-        else if loginType == .Google {
-            loginString = "google"
-        }
+//        var loginString = ""
+//        if loginType == .KaKao {
+//            loginString = "kakao"
+//        }
+//        else if loginType == .Apple {
+//            loginString = "apple"
+//        }
+//        else if loginType == .Google {
+//            loginString = "google"
+//        }
         
         let defaults = UserDefaults.standard
-        defaults.set(loginString, forKey: "logInType")
+        defaults.set(loginType.rawValue, forKey: "logInType")
         
     }
     
@@ -78,13 +78,13 @@ class UserInfoHelper {
             return .None
         }
         
-        if logInType == "kakao" {
+        if logInType == LogInType.KaKao.rawValue {
             return .KaKao
         }
-        else if logInType == "apple" {
+        else if logInType == LogInType.Apple.rawValue {
             return .Apple
         }
-        else if logInType == "google" {
+        else if logInType == LogInType.Google.rawValue {
             return .Google
         }
         else {

@@ -8,9 +8,9 @@
 
 import Foundation
 
-enum LogInType {
-    case None
-    case KaKao
-    case Apple
-    case Google
+enum LogInType:String {
+    case None   = ""
+    case KaKao  = "kakao"
+    case Apple  = "apple"
+    case Google = "google"
 }
