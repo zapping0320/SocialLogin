@@ -8,6 +8,7 @@
 
 import UIKit
 import KakaoSDKCommon
+import AuthenticationServices
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,6 +19,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         
         KakaoSDKCommon.initSDK(appKey: "a46b38da53956c7ac2d975e17d74d893")
+        
+        
+        let appleID = UserInfoHelper.getAppleLoginID()
+        
+        if appleID != "" {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+            appleIDProvider.getCredentialState(forUserID: appleID /* 로그인에 사용한 User Identifier */) { (credentialState, error) in
+                switch credentialState {
+                case .authorized:
+                    // The Apple ID credential is valid.
+                    print("해당 ID는 연동되어있습니다.")
+                case .revoked:
+                    // The Apple ID credential is either revoked or was not found, so show the sign-in UI.
+                    print("해당 ID는 연동되어있지않습니다.")
+                    UserInfoHelper.resetLogin()
+                case .notFound:
+                    // The Apple ID credential is either was not found, so show the sign-in UI.
+                    print("해당 ID를 찾을 수 없습니다.")
+                    UserInfoHelper.resetLogin()
+                default:
+                    break
+                }
+            }
+        }
+        
+        
+        NotificationCenter.default.addObserver(forName: ASAuthorizationAppleIDProvider.credentialRevokedNotification, object: nil, queue: nil) { (Notification) in
+            print("Revoked Notification")
+            // 로그인 페이지로 이동
+            UserInfoHelper.resetLogin()
+        }
         
         return true
     }

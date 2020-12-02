@@ -25,9 +25,19 @@ class LoginViewController: UIViewController {
     }
     
     func setupProviderLoginView() {
-        let authorizationButton = ASAuthorizationAppleIDButton()
+        let authorizationButton = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .white)
+        //let authorizationButton = ASAuthorizationAppleIDButton(authorizationButtonType: .continue , authorizationButtonStyle:.whiteOutline)
         authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
         self.loginProviderStackView.addArrangedSubview(authorizationButton)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+            
+        if UserInfoHelper.isLogIn() {
+            let loginType = UserInfoHelper.getLogInType()
+            self.goMainVC(loginType)
+        }
     }
     
     @objc
@@ -67,8 +77,8 @@ class LoginViewController: UIViewController {
     func goMainVC(_ loginType:LogInType) {
         let mainVC = self.storyboard?.instantiateViewController(identifier: "mainVC") as! MainViewController
         mainVC.modalPresentationStyle = .fullScreen
-        mainVC.loginType = loginType
-        //self.navigationController?.pushViewController(mainVC, animated: false)
+        mainVC.setLogInType(loginType)
+        
         self.present(mainVC, animated: true, completion: nil)
     }
     
@@ -85,6 +95,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
             let fullName = appleIDCredential.fullName
             let email = appleIDCredential.email
             
+            UserInfoHelper.setAppleLoginID(userIdentifier)
             // For the purpose of this demo app, store the `userIdentifier` in the keychain.
             //self.saveUserInKeychain(userIdentifier)
             

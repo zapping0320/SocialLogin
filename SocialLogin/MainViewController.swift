@@ -11,11 +11,16 @@ import KakaoSDKUser
 
 class MainViewController: UIViewController {
     
-    public var loginType:LogInType = .KaKao
+    private var loginType:LogInType = .KaKao
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    }
+    
+    public func setLogInType(_ loginType:LogInType) {
+        self.loginType = loginType
+        UserInfoHelper.setLogInType(loginType)
     }
     
 
@@ -23,18 +28,23 @@ class MainViewController: UIViewController {
         
         
         if loginType == .KaKao {
-        
-        UserApi.shared.logout {(error) in
-            if let error = error {
-                print(error)
+            
+            UserApi.shared.logout {(error) in
+                if let error = error {
+                    print(error)
+                }
+                else {
+                    print("logout() success.")
+                    UserInfoHelper.resetLogin()
+                    self.dismissVC()
+                }
             }
-            else {
-                print("logout() success.")
-                self.dismissVC()
-            }
-        }
             
         }
+        
+        UserInfoHelper.resetLogin()
+        self.dismissVC()
+        
         
     }
     
