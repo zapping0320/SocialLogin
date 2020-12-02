@@ -60,15 +60,24 @@
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="J2V-dy-ukL">
                                 <rect key="frame" x="20" y="486" width="374" height="80"/>
+                                <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="WWV-Hz-cPG"/>
                                 </constraints>
                             </stackView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M8c-ep-ir6" customClass="GIDSignInButton">
+                                <rect key="frame" x="111" y="586" width="240" height="80"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="1sK-bj-xXm"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                         <constraints>
                             <constraint firstItem="J2V-dy-ukL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="3gm-qK-wSZ"/>
+                            <constraint firstItem="M8c-ep-ir6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7bd-hE-mvN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="54W-wa-F2i" secondAttribute="trailing" constant="20" id="BwU-L7-caw"/>
                             <constraint firstItem="MkX-Qw-jsz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HIo-ia-J80"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="J2V-dy-ukL" secondAttribute="trailing" constant="20" id="Hy6-q8-Meq"/>
@@ -80,6 +89,7 @@
                             <constraint firstItem="Xhq-hp-nvc" firstAttribute="top" secondItem="Cai-Ne-vHj" secondAttribute="bottom" constant="20" id="aMJ-Km-HyE"/>
                             <constraint firstItem="Xhq-hp-nvc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="aZy-bS-PUM"/>
                             <constraint firstItem="54W-wa-F2i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="abn-ee-bAu"/>
+                            <constraint firstItem="M8c-ep-ir6" firstAttribute="top" secondItem="J2V-dy-ukL" secondAttribute="bottom" constant="20" id="dCp-Hf-3BQ"/>
                             <constraint firstItem="54W-wa-F2i" firstAttribute="top" secondItem="Xhq-hp-nvc" secondAttribute="bottom" constant="10" id="e2p-ZP-eIF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Cai-Ne-vHj" secondAttribute="trailing" constant="20" id="gNC-E9-iLc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MkX-Qw-jsz" secondAttribute="trailing" constant="20" id="gS8-Sb-7aw"/>
@@ -94,6 +104,7 @@
                         <outlet property="emailTextField" destination="Cai-Ne-vHj" id="Hcv-i8-yCA"/>
                         <outlet property="loginProviderStackView" destination="J2V-dy-ukL" id="bGb-oa-bQr"/>
                         <outlet property="passwordTextField" destination="54W-wa-F2i" id="yni-Li-yin"/>
+                        <outlet property="signInButton" destination="M8c-ep-ir6" id="fXT-XG-926"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -165,6 +176,12 @@
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemBlueColor">
+            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

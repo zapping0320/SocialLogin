@@ -19,10 +19,15 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginProviderStackView: UIStackView!
     
+    @IBOutlet weak var signInButton: GIDSignInButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         setupProviderLoginView()
+        
+        setGoogleSignInButton()
     }
     
     func setupProviderLoginView() {
@@ -30,6 +35,12 @@ class LoginViewController: UIViewController {
         //let authorizationButton = ASAuthorizationAppleIDButton(authorizationButtonType: .continue , authorizationButtonStyle:.whiteOutline)
         authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
         self.loginProviderStackView.addArrangedSubview(authorizationButton)
+    }
+    
+    func setGoogleSignInButton() {
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance().delegate = self
+        signInButton.style = .wide // .wide .iconOnly .standard
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -140,4 +151,41 @@ extension LoginViewController: ASAuthorizationControllerPresentationContextProvi
     func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
         return self.view.window!
     }
+}
+
+extension LoginViewController: GIDSignInDelegate {
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        if let error = error {
+                if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
+                    print("The user has not signed in before or they have since signed out.")
+                } else {
+                    print("\(error.localizedDescription)")
+                }
+                return
+            }
+                
+            // 사용자 정보 가져오기
+            if let userId = user.userID,                  // For client-side use only!
+                let idToken = user.authentication.idToken, // Safe to send to the server
+                let fullName = user.profile.name,
+                let givenName = user.profile.givenName,
+                let familyName = user.profile.familyName,
+                let email = user.profile.email {
+                    
+                print("Token : \(idToken)")
+                print("User ID : \(userId)")
+                print("User Email : \(email)")
+                print("User Name : \((fullName))")
+         
+            } else {
+                print("Error : User Data Not Found")
+            }
+    }
+    
+    func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
+        print("Disconnect")
+        UserInfoHelper.resetLogin()
+    }
+    
+    
 }

@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserInfoHelper.resetLogin()
         }
         
-        GIDSignIn.sharedInstance().clientID = "957665535722-0ta1pnmfavte7smojhjmjkt6afoitusb.apps.googleusercontent.com.apps.googleusercontent.com"
+        GIDSignIn.sharedInstance().clientID = "957665535722-0ta1pnmfavte7smojhjmjkt6afoitusb.apps.googleusercontent.com"
 
         
         return true
