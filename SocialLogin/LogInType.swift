@@ -12,4 +12,5 @@ enum LogInType {
     case None
     case KaKao
     case Apple
+    case Google
 }

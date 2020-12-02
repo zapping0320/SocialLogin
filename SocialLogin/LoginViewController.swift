@@ -48,6 +48,9 @@ class LoginViewController: UIViewController {
             
         if UserInfoHelper.isLogIn() {
             let loginType = UserInfoHelper.getLogInType()
+            if loginType == .Google {
+                GIDSignIn.sharedInstance()?.signIn()
+            }
             self.goMainVC(loginType)
         }
     }
@@ -176,6 +179,7 @@ extension LoginViewController: GIDSignInDelegate {
                 print("User ID : \(userId)")
                 print("User Email : \(email)")
                 print("User Name : \((fullName))")
+                self.goMainVC(.Google)
          
             } else {
                 print("Error : User Data Not Found")

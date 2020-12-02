@@ -8,6 +8,7 @@
 
 import UIKit
 import KakaoSDKUser
+import GoogleSignIn
 
 class MainViewController: UIViewController {
     
@@ -28,7 +29,6 @@ class MainViewController: UIViewController {
         
         
         if loginType == .KaKao {
-            
             UserApi.shared.logout {(error) in
                 if let error = error {
                     print(error)
@@ -39,7 +39,9 @@ class MainViewController: UIViewController {
                     self.dismissVC()
                 }
             }
-            
+        }
+        else if loginType == .Google {
+            GIDSignIn.sharedInstance()?.signOut()
         }
         
         UserInfoHelper.resetLogin()
