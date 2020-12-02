@@ -9,6 +9,7 @@
 import UIKit
 import KakaoSDKAuth
 import GoogleSignIn
+import FBSDKCoreKit   
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -22,6 +23,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             guard let scheme = url.scheme else { return }
             if scheme.contains("com.googleusercontent.apps") {
                 GIDSignIn.sharedInstance().handle(URLContexts.first?.url)
+            }
+            else {
+                ApplicationDelegate.shared.application( UIApplication.shared, open: url, sourceApplication: nil, annotation: [UIApplication.OpenURLOptionsKey.annotation] )
             }
         }
     }

@@ -18,25 +18,25 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Zenos" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j4H-0c-qql">
-                                <rect key="frame" x="175.5" y="188" width="63" height="28"/>
+                                <rect key="frame" x="175.5" y="138" width="63" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="23"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MkX-Qw-jsz">
-                                <rect key="frame" x="20" y="236" width="374" height="21"/>
+                                <rect key="frame" x="20" y="186" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhq-hp-nvc">
-                                <rect key="frame" x="20" y="321" width="374" height="21"/>
+                                <rect key="frame" x="20" y="271" width="374" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7CB-h2-eTk">
-                                <rect key="frame" x="147" y="436" width="120" height="30"/>
+                                <rect key="frame" x="147" y="386" width="120" height="30"/>
                                 <color key="backgroundColor" red="0.97254901960784312" green="0.8666666666666667" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="120" id="Lr4-k4-rcq"/>
@@ -49,27 +49,34 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Cai-Ne-vHj">
-                                <rect key="frame" x="20" y="267" width="374" height="34"/>
+                                <rect key="frame" x="20" y="217" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="54W-wa-F2i">
-                                <rect key="frame" x="20" y="352" width="374" height="34"/>
+                                <rect key="frame" x="20" y="302" width="374" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="J2V-dy-ukL">
-                                <rect key="frame" x="20" y="486" width="374" height="80"/>
+                                <rect key="frame" x="20" y="436" width="374" height="80"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="WWV-Hz-cPG"/>
                                 </constraints>
                             </stackView>
                             <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M8c-ep-ir6" customClass="GIDSignInButton">
-                                <rect key="frame" x="111" y="586" width="240" height="80"/>
+                                <rect key="frame" x="111" y="536" width="240" height="80"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="1sK-bj-xXm"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RUr-en-X72">
+                                <rect key="frame" x="87" y="636" width="240" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="bt9-bX-NVA"/>
+                                    <constraint firstAttribute="width" constant="240" id="pyA-7p-zsf"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -81,14 +88,16 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="54W-wa-F2i" secondAttribute="trailing" constant="20" id="BwU-L7-caw"/>
                             <constraint firstItem="MkX-Qw-jsz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HIo-ia-J80"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="J2V-dy-ukL" secondAttribute="trailing" constant="20" id="Hy6-q8-Meq"/>
+                            <constraint firstItem="RUr-en-X72" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JUt-u6-ny6"/>
                             <constraint firstItem="J2V-dy-ukL" firstAttribute="top" secondItem="7CB-h2-eTk" secondAttribute="bottom" constant="20" id="P6Z-pk-emj"/>
                             <constraint firstItem="7CB-h2-eTk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SND-NP-RZo"/>
-                            <constraint firstItem="j4H-0c-qql" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="100" id="VKM-lW-a2r"/>
+                            <constraint firstItem="j4H-0c-qql" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="VKM-lW-a2r"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xhq-hp-nvc" secondAttribute="trailing" constant="20" id="VT7-Rf-aOU"/>
                             <constraint firstItem="Cai-Ne-vHj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="VqQ-LC-rfV"/>
                             <constraint firstItem="Xhq-hp-nvc" firstAttribute="top" secondItem="Cai-Ne-vHj" secondAttribute="bottom" constant="20" id="aMJ-Km-HyE"/>
                             <constraint firstItem="Xhq-hp-nvc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="aZy-bS-PUM"/>
                             <constraint firstItem="54W-wa-F2i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="abn-ee-bAu"/>
+                            <constraint firstItem="RUr-en-X72" firstAttribute="top" secondItem="M8c-ep-ir6" secondAttribute="bottom" constant="20" id="bDP-Wm-jar"/>
                             <constraint firstItem="M8c-ep-ir6" firstAttribute="top" secondItem="J2V-dy-ukL" secondAttribute="bottom" constant="20" id="dCp-Hf-3BQ"/>
                             <constraint firstItem="54W-wa-F2i" firstAttribute="top" secondItem="Xhq-hp-nvc" secondAttribute="bottom" constant="10" id="e2p-ZP-eIF"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Cai-Ne-vHj" secondAttribute="trailing" constant="20" id="gNC-E9-iLc"/>
@@ -102,6 +111,7 @@
                     <navigationItem key="navigationItem" id="4A0-9B-zEF"/>
                     <connections>
                         <outlet property="emailTextField" destination="Cai-Ne-vHj" id="Hcv-i8-yCA"/>
+                        <outlet property="fbLoginView" destination="RUr-en-X72" id="G1U-CS-s6G"/>
                         <outlet property="loginProviderStackView" destination="J2V-dy-ukL" id="bGb-oa-bQr"/>
                         <outlet property="passwordTextField" destination="54W-wa-F2i" id="yni-Li-yin"/>
                         <outlet property="signInButton" destination="M8c-ep-ir6" id="fXT-XG-926"/>

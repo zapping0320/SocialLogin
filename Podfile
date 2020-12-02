@@ -12,4 +12,6 @@ target 'SocialLogin' do
  pod 'KakaoSDKAuth'  # 카카오 로그인
  pod 'KakaoSDKUser'
  pod 'GoogleSignIn'
+pod 'FBSDKLoginKit'
+    
 end

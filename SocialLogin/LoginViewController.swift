@@ -10,6 +10,7 @@ import UIKit
 import KakaoSDKAuth
 import AuthenticationServices
 import GoogleSignIn
+import FBSDKLoginKit
 
 class LoginViewController: UIViewController {
 
@@ -20,7 +21,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginProviderStackView: UIStackView!
     
     @IBOutlet weak var signInButton: GIDSignInButton!
-    
+
+    @IBOutlet weak var fbLoginView: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +30,8 @@ class LoginViewController: UIViewController {
         setupProviderLoginView()
         
         setGoogleSignInButton()
+
+        setFacebookLoginButton()
     }
     
     func setupProviderLoginView() {
@@ -41,6 +45,16 @@ class LoginViewController: UIViewController {
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance().delegate = self
         signInButton.style = .wide // .wide .iconOnly .standard
+    }
+    
+    func setFacebookLoginButton() {
+        let loginButton = FBLoginButton()
+        //"로고 continue with FaceBook"
+        loginButton.frame = CGRect(x: 0, y: 0, width: 250, height: 50)
+        //width 207-209는 내용이 바뀌면서 글자가 잘리는 수준
+        //"로고 login"
+        //loginButton.frame = CGRect(x: 0, y: 0, width: 206, height: 50)
+        self.fbLoginView.addSubview(loginButton)
     }
     
     override func viewDidAppear(_ animated: Bool) {
