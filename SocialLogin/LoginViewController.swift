@@ -9,6 +9,7 @@
 import UIKit
 import KakaoSDKAuth
 import AuthenticationServices
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
 

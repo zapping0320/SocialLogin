@@ -8,6 +8,7 @@
 
 import UIKit
 import KakaoSDKAuth
+import GoogleSignIn
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,6 +18,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         if let url = URLContexts.first?.url {
             if (AuthApi.isKakaoTalkLoginUrl(url)) {
                 _ = AuthController.handleOpenUrl(url: url)
+            }
+            guard let scheme = url.scheme else { return }
+            if scheme.contains("com.googleusercontent.apps") {
+                GIDSignIn.sharedInstance().handle(URLContexts.first?.url)
             }
         }
     }

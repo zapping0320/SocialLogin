@@ -7,8 +7,9 @@
 //
 
 import UIKit
-import KakaoSDKCommon
-import AuthenticationServices
+import KakaoSDKCommon           //kakao
+import AuthenticationServices   //apple
+import GoogleSignIn             //google
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,9 +19,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         
+        //kakao
         KakaoSDKCommon.initSDK(appKey: "a46b38da53956c7ac2d975e17d74d893")
         
-        
+        //apple
         let appleID = UserInfoHelper.getAppleLoginID()
         
         if appleID != "" {
@@ -50,6 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // 로그인 페이지로 이동
             UserInfoHelper.resetLogin()
         }
+        
+        GIDSignIn.sharedInstance().clientID = "957665535722-0ta1pnmfavte7smojhjmjkt6afoitusb.apps.googleusercontent.com.apps.googleusercontent.com"
+
         
         return true
     }
