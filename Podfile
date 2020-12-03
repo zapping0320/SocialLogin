@@ -13,5 +13,6 @@ target 'SocialLogin' do
  pod 'KakaoSDKUser'
  pod 'GoogleSignIn'
 pod 'FBSDKLoginKit'
+pod 'naveridlogin-sdk-ios'
     
 end

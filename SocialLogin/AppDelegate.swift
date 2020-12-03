@@ -11,6 +11,7 @@ import KakaoSDKCommon           //kakao
 import AuthenticationServices   //apple
 import GoogleSignIn             //google
 import FBSDKCoreKit             //facebook
+import NaverThirdPartyLogin     //naver
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -59,9 +60,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserInfoHelper.resetLogin()
         }
         
+        //google
         GIDSignIn.sharedInstance().clientID = "957665535722-0ta1pnmfavte7smojhjmjkt6afoitusb.apps.googleusercontent.com"
 
+        //facebook
         ApplicationDelegate.shared.application( application, didFinishLaunchingWithOptions: launchOptions )
+        
+        //naver
+        let instance = NaverThirdPartyLoginConnection.getSharedInstance()
+               
+               // 네이버 앱으로 인증하는 방식 활성화
+               instance?.isNaverAppOauthEnable = true
+               
+               // SafariViewController에서 인증하는 방식 활성화
+               instance?.isInAppOauthEnable = true
+               
+               // 인증 화면을 아이폰의 세로모드에서만 적용
+               instance?.isOnlyPortraitSupportedInIphone()
+               
+               instance?.serviceUrlScheme = kServiceAppUrlScheme // 앱을 등록할 때 입력한 URL Scheme
+               instance?.consumerKey = kConsumerKey // 상수 - client id
+               instance?.consumerSecret = kConsumerSecret // pw
+               instance?.appName = kServiceAppName // app name
         
         return true
     }
