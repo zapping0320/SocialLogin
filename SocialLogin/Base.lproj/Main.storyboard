@@ -36,10 +36,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7CB-h2-eTk">
-                                <rect key="frame" x="147" y="386" width="120" height="30"/>
+                                <rect key="frame" x="82" y="386" width="250" height="50"/>
                                 <color key="backgroundColor" red="0.97254901960784312" green="0.8666666666666667" blue="0.039215686274509803" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="Lr4-k4-rcq"/>
+                                    <constraint firstAttribute="width" constant="250" id="9XO-VK-5Ge"/>
+                                    <constraint firstAttribute="height" constant="50" id="c30-om-Vc8"/>
                                 </constraints>
                                 <state key="normal" title="KaKaoTalk 로그인">
                                     <color key="titleColor" systemColor="labelColor"/>
@@ -59,25 +60,15 @@
                                 <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
                             </textField>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="J2V-dy-ukL">
-                                <rect key="frame" x="20" y="436" width="374" height="80"/>
+                                <rect key="frame" x="82" y="456" width="250" height="50"/>
                                 <color key="backgroundColor" systemColor="systemBlueColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="WWV-Hz-cPG"/>
-                                </constraints>
                             </stackView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="M8c-ep-ir6" customClass="GIDSignInButton">
-                                <rect key="frame" x="111" y="536" width="240" height="80"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="1sK-bj-xXm"/>
-                                </constraints>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="M8c-ep-ir6" customClass="GIDSignInButton">
+                                <rect key="frame" x="82" y="526" width="250" height="50"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ITG-0d-1wc">
-                                <rect key="frame" x="132" y="636" width="150" height="30"/>
+                                <rect key="frame" x="82" y="596" width="250" height="50"/>
                                 <color key="backgroundColor" red="0.16470588235294117" green="0.37647058823529411" blue="0.87450980392156863" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="Jdz-eO-iGN"/>
-                                </constraints>
                                 <state key="normal" title="CustomFaceBook">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
@@ -89,27 +80,32 @@
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                         <constraints>
-                            <constraint firstItem="J2V-dy-ukL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="3gm-qK-wSZ"/>
+                            <constraint firstItem="J2V-dy-ukL" firstAttribute="width" secondItem="7CB-h2-eTk" secondAttribute="width" id="5dY-kl-xoY"/>
                             <constraint firstItem="M8c-ep-ir6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7bd-hE-mvN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="54W-wa-F2i" secondAttribute="trailing" constant="20" id="BwU-L7-caw"/>
+                            <constraint firstItem="ITG-0d-1wc" firstAttribute="height" secondItem="7CB-h2-eTk" secondAttribute="height" id="FwZ-RF-xEf"/>
                             <constraint firstItem="MkX-Qw-jsz" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="HIo-ia-J80"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="J2V-dy-ukL" secondAttribute="trailing" constant="20" id="Hy6-q8-Meq"/>
                             <constraint firstItem="J2V-dy-ukL" firstAttribute="top" secondItem="7CB-h2-eTk" secondAttribute="bottom" constant="20" id="P6Z-pk-emj"/>
+                            <constraint firstItem="J2V-dy-ukL" firstAttribute="height" secondItem="7CB-h2-eTk" secondAttribute="height" id="QkX-VO-OPD"/>
                             <constraint firstItem="7CB-h2-eTk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SND-NP-RZo"/>
                             <constraint firstItem="j4H-0c-qql" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="VKM-lW-a2r"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xhq-hp-nvc" secondAttribute="trailing" constant="20" id="VT7-Rf-aOU"/>
+                            <constraint firstItem="M8c-ep-ir6" firstAttribute="width" secondItem="7CB-h2-eTk" secondAttribute="width" id="Vcf-PN-J0v"/>
                             <constraint firstItem="Cai-Ne-vHj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="VqQ-LC-rfV"/>
+                            <constraint firstItem="J2V-dy-ukL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YTY-Gi-j1D"/>
                             <constraint firstItem="Xhq-hp-nvc" firstAttribute="top" secondItem="Cai-Ne-vHj" secondAttribute="bottom" constant="20" id="aMJ-Km-HyE"/>
                             <constraint firstItem="Xhq-hp-nvc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="aZy-bS-PUM"/>
                             <constraint firstItem="54W-wa-F2i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="abn-ee-bAu"/>
                             <constraint firstItem="M8c-ep-ir6" firstAttribute="top" secondItem="J2V-dy-ukL" secondAttribute="bottom" constant="20" id="dCp-Hf-3BQ"/>
                             <constraint firstItem="54W-wa-F2i" firstAttribute="top" secondItem="Xhq-hp-nvc" secondAttribute="bottom" constant="10" id="e2p-ZP-eIF"/>
+                            <constraint firstItem="ITG-0d-1wc" firstAttribute="width" secondItem="7CB-h2-eTk" secondAttribute="width" id="gLb-p4-iTG"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Cai-Ne-vHj" secondAttribute="trailing" constant="20" id="gNC-E9-iLc"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MkX-Qw-jsz" secondAttribute="trailing" constant="20" id="gS8-Sb-7aw"/>
                             <constraint firstItem="j4H-0c-qql" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hwX-ez-Kn0"/>
                             <constraint firstItem="ITG-0d-1wc" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lFZ-GV-z2I"/>
                             <constraint firstItem="MkX-Qw-jsz" firstAttribute="top" secondItem="j4H-0c-qql" secondAttribute="bottom" constant="20" id="m9S-rL-hNB"/>
                             <constraint firstItem="7CB-h2-eTk" firstAttribute="top" secondItem="54W-wa-F2i" secondAttribute="bottom" constant="50" id="nmM-rf-2YD"/>
+                            <constraint firstItem="M8c-ep-ir6" firstAttribute="height" secondItem="7CB-h2-eTk" secondAttribute="height" id="ojH-4f-lVr"/>
                             <constraint firstItem="Cai-Ne-vHj" firstAttribute="top" secondItem="MkX-Qw-jsz" secondAttribute="bottom" constant="10" id="qs8-ZL-B35"/>
                             <constraint firstItem="ITG-0d-1wc" firstAttribute="top" secondItem="M8c-ep-ir6" secondAttribute="bottom" constant="20" id="sna-Yj-KtX"/>
                         </constraints>
@@ -117,9 +113,9 @@
                     <navigationItem key="navigationItem" id="4A0-9B-zEF"/>
                     <connections>
                         <outlet property="emailTextField" destination="Cai-Ne-vHj" id="Hcv-i8-yCA"/>
+                        <outlet property="googleSignInButton" destination="M8c-ep-ir6" id="fXT-XG-926"/>
                         <outlet property="loginProviderStackView" destination="J2V-dy-ukL" id="bGb-oa-bQr"/>
                         <outlet property="passwordTextField" destination="54W-wa-F2i" id="yni-Li-yin"/>
-                        <outlet property="signInButton" destination="M8c-ep-ir6" id="fXT-XG-926"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -191,9 +187,6 @@
         </systemColor>
         <systemColor name="opaqueSeparatorColor">
             <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
         <systemColor name="systemBlueColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

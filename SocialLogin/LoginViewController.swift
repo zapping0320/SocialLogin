@@ -20,7 +20,7 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginProviderStackView: UIStackView!
     
-    @IBOutlet weak var signInButton: GIDSignInButton!
+    @IBOutlet weak var googleSignInButton: GIDSignInButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +42,7 @@ class LoginViewController: UIViewController {
     func setGoogleSignInButton() {
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance().delegate = self
-        signInButton.style = .wide // .wide .iconOnly .standard
+        googleSignInButton.style = .wide // .wide .iconOnly .standard
     }
     
 //    func setFacebookLoginButton() {
