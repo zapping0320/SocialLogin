@@ -126,9 +126,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="4A0-9B-zEF"/>
                     <connections>
+                        <outlet property="appleLoginProviderStackView" destination="J2V-dy-ukL" id="bGb-oa-bQr"/>
                         <outlet property="emailTextField" destination="Cai-Ne-vHj" id="Hcv-i8-yCA"/>
-                        <outlet property="googleSignInButton" destination="M8c-ep-ir6" id="fXT-XG-926"/>
-                        <outlet property="loginProviderStackView" destination="J2V-dy-ukL" id="bGb-oa-bQr"/>
+                        <outlet property="googleLogInButton" destination="M8c-ep-ir6" id="fXT-XG-926"/>
                         <outlet property="naverLoginButton" destination="28P-L5-xrJ" id="hUX-Bx-2e6"/>
                         <outlet property="passwordTextField" destination="54W-wa-F2i" id="yni-Li-yin"/>
                     </connections>
@@ -158,7 +158,7 @@
                                     <color key="titleColor" systemColor="labelColor"/>
                                 </state>
                                 <connections>
-                                    <action selector="signOut:" destination="HcJ-Wf-FSi" eventType="touchUpInside" id="ak3-XT-gp4"/>
+                                    <action selector="logOut:" destination="HcJ-Wf-FSi" eventType="touchUpInside" id="ak3-XT-gp4"/>
                                 </connections>
                             </button>
                         </subviews>

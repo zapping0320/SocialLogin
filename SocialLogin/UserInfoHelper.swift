@@ -35,11 +35,6 @@ class UserInfoHelper {
         defaults.set(appleID, forKey: "appleID")
     }
     
-    static func setKakaoLogin() {
-        let defaults = UserDefaults.standard
-        defaults.set(LogInType.KaKao.rawValue, forKey: "logInType")
-    }
-    
     static func resetLogin() {
         let defaults = UserDefaults.standard
         defaults.set(LogInType.None.rawValue, forKey: "logInType")

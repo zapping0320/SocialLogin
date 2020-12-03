@@ -27,16 +27,14 @@ class MainViewController: UIViewController {
     }
     
 
-    @IBAction func signOut(_ sender: Any) {
-        
-        
+    @IBAction func logOut(_ sender: Any) {
         if loginType == .KaKao {
             UserApi.shared.logout {(error) in
                 if let error = error {
                     print(error)
                 }
                 else {
-                    print("logout() success.")
+                    print("[kakao]logout success")
                     UserInfoHelper.resetLogin()
                     self.dismissVC()
                 }
@@ -55,13 +53,9 @@ class MainViewController: UIViewController {
         
         UserInfoHelper.resetLogin()
         self.dismissVC()
-        
-        
     }
     
     func dismissVC() {
         self.dismiss(animated: true, completion: nil)
     }
-   
-
 }

@@ -19,50 +19,35 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    @IBOutlet weak var appleLoginProviderStackView: UIStackView!
     
-    @IBOutlet weak var loginProviderStackView: UIStackView!
-    
-    @IBOutlet weak var googleSignInButton: GIDSignInButton!
+    @IBOutlet weak var googleLogInButton: GIDSignInButton!
     
     @IBOutlet weak var naverLoginButton: UIButton!
-    let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
+    let naverLoginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
-        setupProviderLoginView()
+      
+        setupAppleProviderLoginView()
         
         setGoogleSignInButton()
-
-        //setFacebookLoginButton()
         
-        //naver
-        loginInstance?.delegate = self
+        naverLoginInstance?.delegate = self
     }
     
-    func setupProviderLoginView() {
+    func setupAppleProviderLoginView() {
         let authorizationButton = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .white)
         //let authorizationButton = ASAuthorizationAppleIDButton(authorizationButtonType: .continue , authorizationButtonStyle:.whiteOutline)
         authorizationButton.addTarget(self, action: #selector(handleAuthorizationAppleIDButtonPress), for: .touchUpInside)
-        self.loginProviderStackView.addArrangedSubview(authorizationButton)
+        self.appleLoginProviderStackView.addArrangedSubview(authorizationButton)
     }
     
     func setGoogleSignInButton() {
         GIDSignIn.sharedInstance()?.presentingViewController = self
         GIDSignIn.sharedInstance().delegate = self
-        googleSignInButton.style = .wide // .wide .iconOnly .standard
+        googleLogInButton.style = .wide // .wide .iconOnly .standard
     }
-    
-//    func setFacebookLoginButton() {
-//        let loginButton = FBLoginButton()
-//        //"로고 continue with FaceBook"
-//        loginButton.frame = CGRect(x: 0, y: 0, width: 250, height: 50)
-//        //width 207-209는 내용이 바뀌면서 글자가 잘리는 수준
-//        //"로고 login"
-//        //loginButton.frame = CGRect(x: 0, y: 0, width: 206, height: 50)
-//        loginButton.permissions = ["public_profile", "email"]
-//        self.fbLoginView.addSubview(loginButton)
-//    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -109,11 +94,11 @@ class LoginViewController: UIViewController {
                     print(error)
                 }
                 else {
-                    print("loginWithKakaoTalk() success.")
+                    print("[kakao] loginWithKakaoTalk() success.")
                     // do something
                     _ = oauthToken
                     // 어세스토큰
-                    let accessToken = oauthToken?.accessToken
+                    let _ = oauthToken?.accessToken
                     self.goMainVC(.KaKao)
                 }
             }
@@ -133,11 +118,11 @@ class LoginViewController: UIViewController {
 
             case .cancelled:
 
-                print("유저 캔슬")
+                print("[facebook] 유저 캔슬")
 
             case .success(let grantedPermissions, let declinedPermissions, let accessToken):
 
-                print("로그인 성공")
+                print("[facebook] 로그인 성공")
 
                 print(grantedPermissions)
 
@@ -145,7 +130,7 @@ class LoginViewController: UIViewController {
 
                 print(accessToken)
                 
-                print("facebook appID = " + accessToken.appID)
+                print("[facebook] facebook appID = " + accessToken.appID)
                 
                 self.goMainVC(.Facebook)
             }
@@ -154,7 +139,7 @@ class LoginViewController: UIViewController {
     }
     
     @IBAction func signInNaver(_ sender: Any) {
-        self.loginInstance?.requestThirdPartyLogin()
+        self.naverLoginInstance?.requestThirdPartyLogin()
     }
     
     func goMainVC(_ loginType:LogInType) {
@@ -202,7 +187,7 @@ extension LoginViewController: ASAuthorizationControllerDelegate {
     }
     
     private func showPasswordCredentialAlert(username: String, password: String) {
-        let message = "The app has received your selected credential from the keychain. \n\n Username: \(username)\n Password: \(password)"
+        let message = "[apple] The app has received your selected credential from the keychain. \n\n Username: \(username)\n Password: \(password)"
         let alertController = UIAlertController(title: "Keychain Credential Received",
                                                 message: message,
                                                 preferredStyle: .alert)
@@ -228,9 +213,9 @@ extension LoginViewController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
         if let error = error {
                 if (error as NSError).code == GIDSignInErrorCode.hasNoAuthInKeychain.rawValue {
-                    print("The user has not signed in before or they have since signed out.")
+                    print("[google] The user has not signed in before or they have since signed out.")
                 } else {
-                    print("\(error.localizedDescription)")
+                    print("[google] \(error.localizedDescription)")
                 }
                 return
             }
@@ -243,19 +228,19 @@ extension LoginViewController: GIDSignInDelegate {
                 let familyName = user.profile.familyName,
                 let email = user.profile.email {
                     
-                print("Token : \(idToken)")
-                print("User ID : \(userId)")
-                print("User Email : \(email)")
-                print("User Name : \((fullName))")
+                print("[google] Token : \(idToken)")
+                print("[google] User ID : \(userId)")
+                print("[google] User Email : \(email)")
+                print("[google] User Name : \((fullName))")
                 self.goMainVC(.Google)
          
             } else {
-                print("Error : User Data Not Found")
+                print("[google] Error : User Data Not Found")
             }
     }
     
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
-        print("Disconnect")
+        print("[google] Disconnect")
         UserInfoHelper.resetLogin()
     }
     
@@ -263,34 +248,34 @@ extension LoginViewController: GIDSignInDelegate {
 
 extension LoginViewController: NaverThirdPartyLoginConnectionDelegate {
     func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
-        print("Success login")
+        print("[naver] Success login")
         self.goMainVC(.Naver)
         getInfo()
     }
     
     func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
-       self.loginInstance?.accessToken
+       self.naverLoginInstance?.accessToken
     }
     
     func oauth20ConnectionDidFinishDeleteToken() {
-        print("log out")
+        print("[naver] log out")
         UserInfoHelper.resetLogin()
     }
     
     func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
-        print("error = \(error.localizedDescription)")
+        print("[naver] error = \(error.localizedDescription)")
     }
     
     // RESTful API, id가져오기
     func getInfo() {
-        guard let isValidAccessToken = loginInstance?.isValidAccessTokenExpireTimeNow() else { return }
+        guard let isValidAccessToken = naverLoginInstance?.isValidAccessTokenExpireTimeNow() else { return }
         
         if !isValidAccessToken {
             return
         }
         
-        guard let tokenType = loginInstance?.tokenType else { return }
-        guard let accessToken = loginInstance?.accessToken else { return }
+        guard let tokenType = naverLoginInstance?.tokenType else { return }
+        guard let accessToken = naverLoginInstance?.accessToken else { return }
         
         let urlStr = "https://openapi.naver.com/v1/nid/me"
         let url = URL(string: urlStr)!
@@ -303,14 +288,14 @@ extension LoginViewController: NaverThirdPartyLoginConnectionDelegate {
             guard let result = response.value as? [String: Any] else { return }
             guard let object = result["response"] as? [String: Any] else { return }
             if let name = object["name"] as? String {
-                print(name)
+                print("[naver] = \(name)")
             }
             if let email = object["email"] as? String {
-                print(email)
+                print("[naver] = \(email)")
             }
-            if let id = object["id"] as? String {
-                print(id)
-            }
+//            if let id = object["id"] as? String {
+//                print(id)
+//            }
             
         }
     }
