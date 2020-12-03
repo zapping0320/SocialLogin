@@ -79,6 +79,9 @@ class UserInfoHelper {
         else if logInType == LogInType.Facebook.rawValue {
             return .Facebook
         }
+        else if logInType == LogInType.Naver.rawValue {
+            return .Naver
+        }
         else {
             return .None
         }

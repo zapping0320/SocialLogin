@@ -9,9 +9,10 @@
 import Foundation
 
 enum LogInType:String {
-    case None   = ""
-    case KaKao  = "kakao"
-    case Apple  = "apple"
-    case Google = "google"
-    case Facebook = "facebook"
+    case None       = ""
+    case KaKao      = "kakao"
+    case Apple      = "apple"
+    case Google     = "google"
+    case Facebook   = "facebook"
+    case Naver      = "naver"
 }

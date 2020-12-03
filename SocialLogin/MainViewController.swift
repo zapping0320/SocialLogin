@@ -10,6 +10,7 @@ import UIKit
 import KakaoSDKUser
 import GoogleSignIn
 import FBSDKLoginKit
+import NaverThirdPartyLogin
 
 class MainViewController: UIViewController {
     
@@ -46,6 +47,10 @@ class MainViewController: UIViewController {
         }
         else if loginType == .Facebook {
             LoginManager.init().logOut()
+        }
+        else if loginType == .Naver {
+            let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
+            loginInstance?.requestDeleteToken()
         }
         
         UserInfoHelper.resetLogin()

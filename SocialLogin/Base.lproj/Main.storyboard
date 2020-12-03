@@ -76,11 +76,22 @@
                                     <action selector="loginFacebook:" destination="BYZ-38-t0r" eventType="touchUpInside" id="s6V-Jg-XVf"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="28P-L5-xrJ">
+                                <rect key="frame" x="82" y="666" width="250" height="50"/>
+                                <color key="backgroundColor" red="0.11372549019607843" green="0.85098039215686272" blue="0.25882352941176467" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Naver">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="signInNaver:" destination="BYZ-38-t0r" eventType="touchUpInside" id="3sL-cC-K9T"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
                         <constraints>
                             <constraint firstItem="J2V-dy-ukL" firstAttribute="width" secondItem="7CB-h2-eTk" secondAttribute="width" id="5dY-kl-xoY"/>
+                            <constraint firstItem="28P-L5-xrJ" firstAttribute="height" secondItem="7CB-h2-eTk" secondAttribute="height" id="5yE-fj-t63"/>
                             <constraint firstItem="M8c-ep-ir6" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="7bd-hE-mvN"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="54W-wa-F2i" secondAttribute="trailing" constant="20" id="BwU-L7-caw"/>
                             <constraint firstItem="ITG-0d-1wc" firstAttribute="height" secondItem="7CB-h2-eTk" secondAttribute="height" id="FwZ-RF-xEf"/>
@@ -88,11 +99,14 @@
                             <constraint firstItem="J2V-dy-ukL" firstAttribute="top" secondItem="7CB-h2-eTk" secondAttribute="bottom" constant="20" id="P6Z-pk-emj"/>
                             <constraint firstItem="J2V-dy-ukL" firstAttribute="height" secondItem="7CB-h2-eTk" secondAttribute="height" id="QkX-VO-OPD"/>
                             <constraint firstItem="7CB-h2-eTk" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="SND-NP-RZo"/>
+                            <constraint firstItem="28P-L5-xrJ" firstAttribute="top" secondItem="ITG-0d-1wc" secondAttribute="bottom" constant="20" id="UWP-SS-HM3"/>
                             <constraint firstItem="j4H-0c-qql" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="50" id="VKM-lW-a2r"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Xhq-hp-nvc" secondAttribute="trailing" constant="20" id="VT7-Rf-aOU"/>
                             <constraint firstItem="M8c-ep-ir6" firstAttribute="width" secondItem="7CB-h2-eTk" secondAttribute="width" id="Vcf-PN-J0v"/>
                             <constraint firstItem="Cai-Ne-vHj" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="VqQ-LC-rfV"/>
+                            <constraint firstItem="28P-L5-xrJ" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Wm7-Vq-i15"/>
                             <constraint firstItem="J2V-dy-ukL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="YTY-Gi-j1D"/>
+                            <constraint firstItem="28P-L5-xrJ" firstAttribute="width" secondItem="7CB-h2-eTk" secondAttribute="width" id="YcI-dn-qbe"/>
                             <constraint firstItem="Xhq-hp-nvc" firstAttribute="top" secondItem="Cai-Ne-vHj" secondAttribute="bottom" constant="20" id="aMJ-Km-HyE"/>
                             <constraint firstItem="Xhq-hp-nvc" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="aZy-bS-PUM"/>
                             <constraint firstItem="54W-wa-F2i" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="abn-ee-bAu"/>
@@ -115,6 +129,7 @@
                         <outlet property="emailTextField" destination="Cai-Ne-vHj" id="Hcv-i8-yCA"/>
                         <outlet property="googleSignInButton" destination="M8c-ep-ir6" id="fXT-XG-926"/>
                         <outlet property="loginProviderStackView" destination="J2V-dy-ukL" id="bGb-oa-bQr"/>
+                        <outlet property="naverLoginButton" destination="28P-L5-xrJ" id="hUX-Bx-2e6"/>
                         <outlet property="passwordTextField" destination="54W-wa-F2i" id="yni-Li-yin"/>
                     </connections>
                 </viewController>

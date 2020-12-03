@@ -11,6 +11,8 @@ import KakaoSDKAuth
 import AuthenticationServices
 import GoogleSignIn
 import FBSDKLoginKit
+import NaverThirdPartyLogin
+import Alamofire
 
 class LoginViewController: UIViewController {
     
@@ -22,6 +24,9 @@ class LoginViewController: UIViewController {
     
     @IBOutlet weak var googleSignInButton: GIDSignInButton!
     
+    @IBOutlet weak var naverLoginButton: UIButton!
+    let loginInstance = NaverThirdPartyLoginConnection.getSharedInstance()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -30,6 +35,9 @@ class LoginViewController: UIViewController {
         setGoogleSignInButton()
 
         //setFacebookLoginButton()
+        
+        //naver
+        loginInstance?.delegate = self
     }
     
     func setupProviderLoginView() {
@@ -145,6 +153,10 @@ class LoginViewController: UIViewController {
         }
     }
     
+    @IBAction func signInNaver(_ sender: Any) {
+        self.loginInstance?.requestThirdPartyLogin()
+    }
+    
     func goMainVC(_ loginType:LogInType) {
         let mainVC = self.storyboard?.instantiateViewController(identifier: "mainVC") as! MainViewController
         mainVC.modalPresentationStyle = .fullScreen
@@ -245,6 +257,62 @@ extension LoginViewController: GIDSignInDelegate {
     func sign(_ signIn: GIDSignIn!, didDisconnectWith user: GIDGoogleUser!, withError error: Error!) {
         print("Disconnect")
         UserInfoHelper.resetLogin()
+    }
+    
+}
+
+extension LoginViewController: NaverThirdPartyLoginConnectionDelegate {
+    func oauth20ConnectionDidFinishRequestACTokenWithAuthCode() {
+        print("Success login")
+        self.goMainVC(.Naver)
+        getInfo()
+    }
+    
+    func oauth20ConnectionDidFinishRequestACTokenWithRefreshToken() {
+       self.loginInstance?.accessToken
+    }
+    
+    func oauth20ConnectionDidFinishDeleteToken() {
+        print("log out")
+        UserInfoHelper.resetLogin()
+    }
+    
+    func oauth20Connection(_ oauthConnection: NaverThirdPartyLoginConnection!, didFailWithError error: Error!) {
+        print("error = \(error.localizedDescription)")
+    }
+    
+    // RESTful API, id가져오기
+    func getInfo() {
+        guard let isValidAccessToken = loginInstance?.isValidAccessTokenExpireTimeNow() else { return }
+        
+        if !isValidAccessToken {
+            return
+        }
+        
+        guard let tokenType = loginInstance?.tokenType else { return }
+        guard let accessToken = loginInstance?.accessToken else { return }
+        
+        let urlStr = "https://openapi.naver.com/v1/nid/me"
+        let url = URL(string: urlStr)!
+        
+        let authorization = "\(tokenType) \(accessToken)"
+        
+        let req = AF.request(url, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: ["Authorization": authorization])
+        
+        req.responseJSON { response in
+            guard let result = response.value as? [String: Any] else { return }
+            guard let object = result["response"] as? [String: Any] else { return }
+            if let name = object["name"] as? String {
+                print(name)
+            }
+            if let email = object["email"] as? String {
+                print(email)
+            }
+            if let id = object["id"] as? String {
+                print(id)
+            }
+            
+        }
     }
     
     
